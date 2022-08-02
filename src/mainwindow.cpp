@@ -17,6 +17,8 @@
 #include <iostream>
 #include <fmt/core.h>
 
+
+
 #include "mainwindow.h"
 #include "version.h"
 #include "editor.h"
@@ -88,7 +90,7 @@ bool MainWindow::exit(bool fullExit = true)
 { 
     if(!saved) {
         // Create a messagebox
-        auto answer = QMessageBox::question(this, PROGRAM, fmt::format("File '{}' has been modified.\n\nWould you like to save the changes?", fileName).c_str(), 
+        auto answer = QMessageBox::question(this, PROGRAM, fmt::format("'{}' への変更内容を保存しますか?", fileName).c_str(), 
                                             QMessageBox::Save | QMessageBox::StandardButton::Discard | QMessageBox::Cancel);
 
         // Handle the output of the messagebox
@@ -139,7 +141,7 @@ void MainWindow::cursorMoved()
     // Update the statusbar
     int row = ui->text->textCursor().blockNumber()+1;
     int col = ui->text->textCursor().positionInBlock()+1;
-    statusBarLabel.setText(fmt::format("Ln {}, Col {}", row, col).c_str());
+    statusBarLabel.setText(fmt::format("{}行、{} 列", row, col).c_str());
 }
 
 void MainWindow::updateTitle() 
@@ -157,11 +159,11 @@ void MainWindow::openFile()
 
     // Get the file from the user
     QString fileName = QFileDialog::getOpenFileName(this,
-    tr("Open"), QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), tr("Text Files (*.txt *.text);;All Files (*)"));
+    tr("Open"), QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), tr("テキスト文書 (*.txt *.text);;すべてのファイル (*)"));
     
     // This should only trigger if the user exits the dialog
     if(!std::filesystem::exists(fileName.toStdString())) {
-        spdlog::error("Invalid or no file");
+        spdlog::error("ファイルを開くことができません。");
         return;
     }
 
@@ -175,10 +177,10 @@ void MainWindow::newFile()
     if(exit(false)) {
         ui->text->clear();
         saved = true;
-        fileName = "Untitled";
+        fileName = "無題";
         filePath.clear();
         updateTitle();
-        spdlog::info("Created new file");
+        spdlog::info("ファイルを作成しました");
     }
 }
 
@@ -225,7 +227,7 @@ void MainWindow::print()
         return;
     
     // Confirmation
-    auto answer = QMessageBox::question(this, "Print", fmt::format("Are you sure you want to print document: '{}'?", fileName).c_str(), QMessageBox::Yes, QMessageBox::No);
+    auto answer = QMessageBox::question(this, "Print", fmt::format("次のドキュメントを印刷しますか? : '{}'", fileName).c_str(), QMessageBox::Yes, QMessageBox::No);
 
     // Print
     if(answer == QMessageBox::Yes)
@@ -252,7 +254,7 @@ std::string MainWindow::saveAsDialog()
 {
     // Get the location from the user
     QString fileName = QFileDialog::getSaveFileName(this,
-    tr("Save As..."), QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), tr("Text Files (*.txt *.text);;All Files (*)"));
+    tr("Save As..."), QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), tr("テキスト文書 (*.txt *.text);;すべてのファイル (*)"));
 
     return fileName.toStdString();
 }
@@ -304,7 +306,7 @@ void MainWindow::statusBar()
 // Help functions
 
 void MainWindow::reportBug() { QDesktopServices::openUrl(QUrl("https://github.com/Starman0620/QNotepad/issues/new")); }
-void MainWindow::aboutDialog() { QMessageBox::about(this, fmt::format("About {}", PROGRAM).c_str(), fmt::format("{} {}\n\nWritten by Cam K.\nLicensed under the BSD 2-Clause license", PROGRAM, VERSION).c_str()); }
+void MainWindow::aboutDialog() { QMessageBox::about(this, fmt::format("メモ帳 について", PROGRAM).c_str(), fmt::format("{} {}\n\nWritten by Cam K.\nTranslated by Rento Nemoto\nQNotepad とそのユーザー インターフェイスは、日本国およびその他の国/地域の著作権およびその他の知的財産権によって保護されています。\nこのソフトウェアは、2条項BSDライセンスの条件に基づいて利用可能です。\nこのソフトウェアは自由ソフトウェアです。", PROGRAM, VERSION).c_str()); }
 
 // Getters
 

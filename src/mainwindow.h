@@ -63,7 +63,7 @@ private:
 	SearchDialog *searchDialog;
 	QPrintDialog *printDialog = nullptr;
 	QPrinter *printer = nullptr;
-	std::string fileName = "Untitled";
+	std::string fileName = "無題";
 	std::string filePath;
 	QLabel statusBarLabel;
 	bool saved = true; // This is true on default just to prevent an asterisk in the title

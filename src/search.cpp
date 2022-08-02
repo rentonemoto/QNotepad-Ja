@@ -39,7 +39,7 @@ void SearchDialog::findNext()
     bool found = false;
     found = editor->find(ui->query->text(), flags);
     if(!found)
-        QMessageBox::information(this, PROGRAM, fmt::format("Cannot find '{}'", ui->query->text().toStdString()).c_str(), QMessageBox::Ok);
+        QMessageBox::information(this, PROGRAM, fmt::format("'{}' が見つかりません。", ui->query->text().toStdString()).c_str(), QMessageBox::Ok);
 }
 
 // Set the enabled status of the "find next" button according to the presence of text

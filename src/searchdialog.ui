@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Find</string>
+   <string>検索</string>
   </property>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
@@ -38,7 +38,7 @@
     <item>
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>Find What:</string>
+       <string>検索する文字列:</string>
       </property>
      </widget>
     </item>
@@ -57,14 +57,14 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>Find Next</string>
+         <string>次を検索</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="cancelButton">
         <property name="text">
-         <string>Cancel</string>
+         <string>キャンセル</string>
         </property>
        </widget>
       </item>
@@ -94,7 +94,7 @@
        <bool>true</bool>
       </property>
       <property name="text">
-       <string>Match Case</string>
+       <string>大文字と小文字を区別する</string>
       </property>
      </widget>
     </item>
@@ -103,7 +103,7 @@
       <item>
        <widget class="QRadioButton" name="upRadio">
         <property name="text">
-         <string>Up</string>
+         <string>上へ</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -113,7 +113,7 @@
       <item>
        <widget class="QRadioButton" name="downRadio">
         <property name="text">
-         <string>Down</string>
+         <string>下へ</string>
         </property>
        </widget>
       </item>
