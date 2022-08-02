@@ -4,16 +4,16 @@ A simple notepad program written in C++ with Qt, inspired by the Windows notepad
 # Install
 
 ## Pre-compiled binaries
-Download the [latest release](https://github.com/Starman0620/QNotepad/releases) and install it as you normally would with your respective package manager
+Download the [latest release](https://github.com/rentonemoto/QNotepad-Ja/releases) and install it as you normally would with your respective package manager
 
 ## Source
-After [building](https://github.com/Starman0620/QNotepad#build), run `sudo make install` in the build directory
+After [building](https://github.com/rentonemoto/QNotepad-Ja/#build), run `sudo make install` in the build directory
 
 # Build
 Clone the repo:
 
 ```
-git clone https://github.com/Starman0620/QNotepad --recursive
+git clone https://github.com/rentonemoto/QNotepad-Ja/ --recursive
 ```
 
 ## Linux, BSD, macOS & Haiku
